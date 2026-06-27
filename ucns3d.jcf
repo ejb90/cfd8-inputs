@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#SBATCH --job-name=Bubble
+#SBATCH --comment=UCNS3D
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=128
+#SBATCH --cpus-per-task=1
+#SBATCH --output=out
+#SBATCH --error=err
+#SBATCH --time=12:00:00
+#SBATCH --mem-bind=local
+#SBATCH --partition=parallel
+#SBATCH --mem=0
+
+rm Errors.dat fort* GRID* history.tct OUT*.vtu OUT*.pvtu RESTART.dat ucns3d.err ucns3d.out pos*
+
+module purge
+module load 
+
