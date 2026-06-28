@@ -7,13 +7,18 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --output=out
 #SBATCH --error=err
-#SBATCH --time=12:00:00
+#SBATCH --time=72:00:00
 #SBATCH --mem-bind=local
 #SBATCH --partition=parallel
 #SBATCH --mem=0
 
+date -Iseconds > start
 rm Errors.dat fort* GRID* history.tct OUT*.vtu OUT*.pvtu RESTART.dat ucns3d.err ucns3d.out pos*
 
 module purge
-module load 
+module load gcc/12.3.0
+module load openmpi/4.1.6
 
+time srun.awe -np 128 ./ucns3d_p > ucns3d.out 2> ucns3d.err
+date -Iseconds > done
+                                           
